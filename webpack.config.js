@@ -32,9 +32,9 @@ module.exports = {
     return [ require('precss'), require('postcss-cssnext') ];
   },
   output: {
-    path:         __dirname + '/build',
+    path:         __dirname + '/static',
     filename:     'app.js',
-    publicPath:   'build/'
+    publicPath:   'static/'
   },
   plugins: [],
   resolve: {

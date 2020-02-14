@@ -99,6 +99,14 @@
         /*z-index: 2;*/
       }
 
+      .modal__append {
+        text-align: center;
+        font-size: 10px;
+        padding-top: 20px;
+        color: #FFFFFF;
+        display: none;
+      }
+
       .modal__buttons {
         position: absolute;
         bottom: 25px;
@@ -195,11 +203,13 @@
 
     <script id="js-modal-template" type="text/template">
       <div class="modal__text" id="js-modal-text">
-        The web + motion <br /> is
+        你愿意和我在一起吗？
       </div>
+      <br><br>
+      <p class="modal__append" id="js-modal-append">只可以同意o(´^｀)o</p>
       <div class="modal__buttons">
-        <div class="modal__button modal__button--love" id="js-button-love">love</div>
-        <div class="modal__button modal__button--hate" id="js-button-hate">hate</div>
+        <div class="modal__button modal__button--love" id="js-button-love">嗯嗯</div>
+        <div class="modal__button modal__button--hate" id="js-button-hate">拒绝</div>
       </div>
     </script>
 
@@ -209,8 +219,8 @@
     <br />
     <br />
 
-    <script src="node_modules/mo-js/build/mo.js"></script>
-    <script src="build/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+    <script src="/static/app.js"></script>
 
   </body>
 </html>

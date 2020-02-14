@@ -27,6 +27,8 @@ class Modal extends Module {
     this.buttonLove = this._findEl('#js-button-love');
     this.buttonHate = this._findEl('#js-button-hate');
     this.modalText  = this._findEl('#js-modal-text');
+    this.modalAppend = this._findEl('#js-modal-append');
+    this.hateCount = 0;
 
     mojs.h.force3d(this.el);
     const rotateCurve = mojs.easing.path('M0,100 C0,100 18.4374504,69.9344254 47.837504,100 C66.7065746,119.176264 100,100 100,100');
@@ -192,6 +194,7 @@ class Modal extends Module {
   }
 
   _addListeners () {
+    var self = this;
     this.buttonLove.addEventListener( 'mouseenter', this._buttonEnter.bind(this) );
     this.buttonHate.addEventListener( 'mouseenter', this._buttonEnter.bind(this) );
     this.buttonLove.addEventListener( 'mouseleave', this._buttonLeave.bind(this) );
@@ -203,7 +206,26 @@ class Modal extends Module {
     });
     this.buttonHate.addEventListener( 'click', () => {
       this._setWord( 'hate' );
-      this._playHide();
+      // this._playHide();
+      this.hateCount++;
+
+      if (this.hateCount === 1) {
+        this.buttonHate.style.display = 'none';
+        this.modalAppend.style.display = 'block';
+        setTimeout(function(){
+          self.buttonHate.style.display = 'inline-block';
+          self.modalAppend.innerHTML='只是想再让你考虑一下(*／ω＼*)';
+        }, 3000);
+      } else if (this.hateCount === 2) {
+        self.modalAppend.innerHTML='(｡•́︿•̀｡)';
+      } else {
+        self.modalAppend.innerHTML='没关系，做朋友吧(•̀ω•́)✧';
+        this.modalAppend.style.fontSize = '14px';
+        this.buttonLove.style.display = 'none';
+        this.buttonHate.style.display = 'none';
+        this.modalText.innerHTML='';
+      }
+      
     });
   }
 
